@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Seznam Email Inbox Zero",
-  "version": "0.1",
+  "name": "Seznam Inbox Zero",
+  "version": "1.0",
   "description": "Archive email quickly in Seznam email",
   "icons": {
     "16": "images/icon-16.png",
