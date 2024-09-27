@@ -10,7 +10,7 @@ function injectArchiveButton() {
     if (moveButton == firstChild) {
       function archive() {
         moveButton.click()
-        const popup = document.querySelector('div.popup.move.select')
+        const popup = document.querySelector('.popup.move.select')
         archiveItem = popup.children[4]
         archiveItem.click()
       }
