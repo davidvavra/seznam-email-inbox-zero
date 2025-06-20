@@ -4,13 +4,14 @@ var obs = new MutationObserver(function (mutations, observer) {
 obs.observe(document.body, { childList: true, subtree: true, attributes: false, characterData: false });
 
 function injectArchiveButton() {
-  const moveButton = document.querySelector('button.popup.move')
-  if (moveButton) {
-    const firstChild = moveButton.parentElement.childNodes[0]
-    if (moveButton == firstChild) {
+  const buttonGroup = document.querySelector('span.button-group')
+  if (buttonGroup) {
+    const firstButton = buttonGroup.childNodes[0]
+    if (firstButton.classList.contains('popup')) {
+      // archive button is not there yet, create it
       function archive() {
-        moveButton.click()
-        const popup = document.querySelector('.popup.move.select')
+        firstButton.click()
+        const popup = document.querySelector('.move')
         archiveItem = popup.children[4]
         archiveItem.click()
       }
@@ -22,9 +23,11 @@ function injectArchiveButton() {
       text.textContent = "Archivovat"
       archiveButton.append(text)
 
-      moveButton.insertAdjacentElement('beforebegin', archiveButton)
+      firstButton.insertAdjacentElement('beforebegin', archiveButton)
     }
-    const archiveButton = moveButton.parentElement.childNodes[0]
-    archiveButton.disabled = moveButton.disabled
+    if (!firstButton.classList.contains('popup')) {
+      // disable archive button if move button is also disabled
+      firstButton.disabled = buttonGroup.childNodes[1].disabled
+    }
   }
 }
