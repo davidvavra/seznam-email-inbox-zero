@@ -11,7 +11,7 @@ function injectArchiveButton() {
       // archive button is not there yet, create it
       function archive() {
         firstButton.click()
-        const popup = document.querySelector('.move')
+        const popup = document.querySelector('wm-select[role="menu"]')
         archiveItem = popup.children[4]
         archiveItem.click()
       }
